@@ -2,6 +2,6 @@ from Pydantic import BaseModel
 
 
 class Currencies(BaseModel):
-    from_currency:
-    to_currency:
+    from_currency: str
+    to_currency: str
     amount: float
