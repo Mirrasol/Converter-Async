@@ -534,6 +534,7 @@ dependencies = [
     { name = "asyncpg" },
     { name = "fastapi", extra = ["all"] },
     { name = "psycopg2-binary" },
+    { name = "python-dotenv" },
     { name = "sqlalchemy" },
 ]
 
@@ -548,6 +549,7 @@ requires-dist = [
     { name = "asyncpg", specifier = ">=0.30.0" },
     { name = "fastapi", extras = ["all"], specifier = ">=0.115.6" },
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
+    { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "sqlalchemy", specifier = ">=2.0.36" },
 ]
 
