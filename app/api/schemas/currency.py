@@ -1,4 +1,4 @@
-from Pydantic import BaseModel
+from pydantic import BaseModel
 
 
 class Currencies(BaseModel):
