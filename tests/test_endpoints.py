@@ -26,3 +26,13 @@ def test_login_route():
         )
     assert response.status_code == 200
     assert 'access_token' in response.json()
+
+
+def test_show_currencies_route():
+    user_data = {'username': 'Gale', 'password': 'waterdeep888'}
+    response_login = client.post('/auth/login/', data=user_data)
+    access_token = response_login.json()['access_token']
+
+    authorized_headers = {'Authorization': f'Bearer {access_token}'}
+    response = client.get('/currency/list/', headers=authorized_headers)
+    assert response.status_code == 200
