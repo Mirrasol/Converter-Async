@@ -11,7 +11,7 @@ auth_router = APIRouter(
 )
 
 
-@auth_router.post('/auth/register')
+@auth_router.post('/register/')
 def register_user(user: User):
     username_to_check = user.username
     if get_user(username_to_check):
@@ -25,7 +25,7 @@ def register_user(user: User):
         return {'message': 'You have successfully registered!'}
 
 
-@auth_router.post('/auth/login')
+@auth_router.post('/login/')
 def login(user_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     user_data_from_db = get_user(user_data.username)
     if user_data_from_db is None or user_data.password != user_data_from_db.password:
