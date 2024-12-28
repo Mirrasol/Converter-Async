@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
 from app.api.schemas.users import User
-from app.db.db_manager import add_user, get_user, get_users_list
+from app.db.db_manager import add_user, get_user
 from app.core.security import create_token
 
 auth_router = APIRouter(
