@@ -3,7 +3,7 @@ from app.db.database import USERS_DATA
 
 
 def add_user(user: User):
-    USERS_DATA.append(user)
+    USERS_DATA.append(dict(user))
 
 
 def get_user(username: str, database: list = USERS_DATA):

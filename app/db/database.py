@@ -1,3 +1,5 @@
 USERS_DATA = [
-    {"username": "user1", "password": "123321"},
+    {"username": "Shadowheart", "password": "Selunites_Unite"},
+    {"username": "Astarion", "password": "123321"},
+    {'username': 'Gale', 'password': 'waterdeep888'},
 ]
