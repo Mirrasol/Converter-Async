@@ -1,5 +1,5 @@
 from app.api.schemas.users import User
-from app.db.database import USERS_DATA
+from app.db.database_old import USERS_DATA
 
 
 def add_user(user: User):

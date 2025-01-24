@@ -1,5 +1,12 @@
-USERS_DATA = [
-    {"username": "Shadowheart", "password": "Selunites_Unite"},
-    {"username": "Astarion", "password": "123321"},
-    {'username': 'Gale', 'password': 'waterdeep888'},
-]
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine, AsyncSession
+from sqlalchemy.orm import DeclarativeBase
+from app.core.config import get_settings
+
+settings = get_settings()
+
+engine = create_async_engine(settings.ASYNC_DATABASE_URL)
+async_session_maker = async_sessionmaker(engine, class_=AsyncSession)
+
+
+class Base(DeclarativeBase):
+    pass
