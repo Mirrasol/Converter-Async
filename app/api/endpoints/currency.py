@@ -20,6 +20,6 @@ def exchange_currency(currencies: Currencies, user: str = Depends(get_user_from_
     result = get_current_exchange_rates(currencies)
     if not result:
         raise HTTPException(
-            status_code=status_code.HTTP_400,
+            status_code=400,
             detail='You have entered an invalid currency code',
         )
