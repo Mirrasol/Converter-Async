@@ -2,7 +2,7 @@ install:
 	uv sync
 
 run:
-	uv run uvicorn main:app
+	uv run uvicorn main:app --reload
 
 test:
 	uv run pytest -v app/test/
