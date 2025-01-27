@@ -1,14 +1,6 @@
-from abc import ABC, abstractmethod
-from sqlalchemy import select
-from app.api.schemas.users import UserCreate, UserFromDB
 from app.db.models import User
+from app.repositories.base_repository import Repository
 
 
-class UserRepository(ABC):
-    @abstractmethod
-    async def get_user(self, user: UserFromDB) -> User:
-        pass
-
-    @abstractmethod
-    async def create_user(self, user: UserCreate) -> User:
-        pass
+class UserRepository(Repository):
+    model = User
