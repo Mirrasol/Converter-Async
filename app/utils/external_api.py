@@ -1,4 +1,3 @@
-import httpx
 from httpx import AsyncClient
 from app.core.config import get_settings
 from app.api.schemas.currency import Currencies
