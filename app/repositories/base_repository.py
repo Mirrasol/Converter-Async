@@ -9,7 +9,11 @@ class AbstractRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    async def find_one(self, data: dict):
+    async def get_one_by_id(self, id: int):
+        raise NotImplementedError
+
+    @abstractmethod
+    async def get_one_by_name(self, name: str):
         raise NotImplementedError
 
 
@@ -24,7 +28,12 @@ class Repository(AbstractRepository):
         result = await self.session.execute(query)
         return result.scalar_one()
 
-    async def find_one(self, data: dict):
-        query = select(self.model).where(self.model.username == data['username'])
+    async def get_one_by_id(self, id: int):
+        query = select(self.model).where(self.model.id == id)
         result = await self.session.execute(query)
-        return result.scalars().first()
+        return result.scalar_one()
+
+    async def get_one_by_name(self, name: str):
+        query = select(self.model).where(self.model.username == name)
+        result = await self.session.execute(query)
+        return result.scalar_one()

@@ -4,7 +4,6 @@ from app.services.users_service import UserService
 from app.utils.uow import UnitOfWork, IUnitOfWork
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
-from app.core.security import create_token
 
 auth_router = APIRouter(
     prefix='/auth',
@@ -26,9 +25,9 @@ async def register_user(
 
 
 @auth_router.post('/login/')
-def login(
+async def login(
     user_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     user_service: UserService = Depends(get_user_service),
 ):
-    current_token = create_token({'sub': user_data.username})
+    current_token = await user_service.get_jwt_token(user_data)
     return {'access_token': current_token}
