@@ -11,6 +11,7 @@ dependencies = [
     "alembic>=1.14.1",
     "asyncpg>=0.30.0",
     "fastapi[all]>=0.115.6",
+    "passlib[bcrypt]>=1.7.4",
     "psycopg2-binary>=2.9.10",
     "pydantic-settings>=2.7.0",
     "pyjwt>=2.10.1",
@@ -23,6 +24,7 @@ dependencies = [
 dev-dependencies = [
     "flake8>=7.1.1",
     "pytest>=8.3.4",
+    "ruff>=0.12.0",
 ]
 
 [build-system]
