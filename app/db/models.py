@@ -1,5 +1,4 @@
-from sqlalchemy import DateTime, func
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import BigInteger, DateTime, func
 from sqlalchemy.orm import Mapped, mapped_column
 from app.db.database import Base
 import datetime
@@ -9,11 +8,11 @@ import uuid
 class User(Base):
     __tablename__ = 'user'
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+    id: Mapped[int] = mapped_column(
+        BigInteger,
         primary_key=True,
-        index=True
-        )
+        index=True,
+    )
     username: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
     created_at: Mapped[datetime.datetime] = mapped_column(
