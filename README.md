@@ -26,7 +26,7 @@ make install
 
 or set your own virtual environment using pip and other package managers.
 
-3) Don't for get to create the .env file that contains your secret keys and database settings: 
+3) Don't forget to create the '.env' file that contains your secret keys and database settings: 
  - Please refer to the '.env_example' file
 
  - Note: you can get the API_Key from the external forex API: ["Currency Data API"](https://apilayer.com/marketplace/currency_data-api)
@@ -37,7 +37,7 @@ or set your own virtual environment using pip and other package managers.
 alembic upgrade head
 ```
 
-4) Run the project with a command:
+5) Run the project with a command:
 
 ```bash
 make run
@@ -49,7 +49,7 @@ or with a Uvicorn directly:
 uvicorn main:app --reload
 ```
 
-5) Check Makefile for the rest of the available commands.
+6) Check Makefile for the rest of the available commands.
 
 ## List of endpoints
 
