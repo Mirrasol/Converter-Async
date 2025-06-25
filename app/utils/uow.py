@@ -4,6 +4,9 @@ from app.repositories.users_repository import UserRepository
 
 
 class IUnitOfWork(ABC):
+    """An abstract basic class, a base pattern to apply 
+    to specific repositories and transactions.
+    """
     user: UserRepository
 
     @abstractmethod
@@ -24,6 +27,9 @@ class IUnitOfWork(ABC):
 
 
 class UnitOfWork(IUnitOfWork):
+    """An implementation of the UoW pattern
+    to work with databases.
+    """
     def __init__(self):
         self.session_factory = async_session_maker
 
