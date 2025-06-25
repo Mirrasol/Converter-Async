@@ -1,4 +1,4 @@
-from httpx import AsyncClient
+import aiohttp
 from app.core.config import get_settings
 from app.api.schemas.currency import Currencies
 from app.core.exception_handlers import InvalidCurrencyException, ExternalAPIException
@@ -7,18 +7,18 @@ settings = get_settings()
 
 
 async def get_currencies_list():
-    with AsyncClient() as client:
+    async with aiohttp.ClientSession() as session:
         url = 'https://api.apilayer.com/currency_data/list'
         headers = {'apikey': settings.API_KEY}
-        response_data = await client.get(url, headers=headers)
-        if response_data.status_code != 200:
-            raise ExternalAPIException(status_code=response_data.status_code)
-        currencies_list = response_data.json().get('currencies')
-        return currencies_list
+        async with session.get(url=url, headers=headers) as response:
+            if response.status != 200:
+                raise ExternalAPIException(status_code=response.status)
+            currencies_list = await response.json()
+            return currencies_list.get('currencies')        
 
 
 async def get_current_exchange_rates(currencies_data: Currencies):
-    with AsyncClient() as client:
+    async with aiohttp.ClientSession() as session:
         url = 'https://api.apilayer.com/currency_data/convert'
         params = {
             'from': currencies_data.from_currency,
@@ -26,8 +26,8 @@ async def get_current_exchange_rates(currencies_data: Currencies):
             'amount': currencies_data.amount,
         }
         headers = {'apikey': settings.API_KEY}
-        response_data = await client.get(url, params=params, headers=headers)
-        if response_data.status_code != 200:
-            raise InvalidCurrencyException(status_code=response_data.status_code)
-        exchange_result = response_data.json().get('result')
-        return exchange_result
+        async with session.get(url=url, headers=headers, params=params) as response:
+            if response.status != 200:
+                raise InvalidCurrencyException(status_code=response.status)
+            exchange_result = await response.json()
+            return exchange_result.get('result')

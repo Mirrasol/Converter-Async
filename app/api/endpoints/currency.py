@@ -8,14 +8,13 @@ currency_router = APIRouter(
     tags=['Currency'],
 )
 
-
 @currency_router.get('/list')
-def show_currencies_list(user: str = Depends(get_user_from_token)):
-    currencies = get_currencies_list()
+async def show_currencies_list(user: str = Depends(get_user_from_token)):
+    currencies = await get_currencies_list()
     return currencies
 
 
 @currency_router.post('/exchange')
-def exchange_currency(currencies: Currencies, user: str = Depends(get_user_from_token)):
-    result = get_current_exchange_rates(currencies)
+async def exchange_currency(currencies: Currencies, user: str = Depends(get_user_from_token)):
+    result = await get_current_exchange_rates(currencies)
     return result
