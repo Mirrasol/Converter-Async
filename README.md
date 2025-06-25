@@ -14,17 +14,17 @@ This project is built using FastAPI as the main framework. Please refer to the p
 
 1) Download the package from GitHub:
 
-```bash
-git clone git@github.com:Mirrasol/Currency-Converter.git
-```
+    ```bash
+    git clone git@github.com:Mirrasol/Currency-Converter.git
+    ```
 
 2) Install using uv from your console:
 
-```bash
-make install
-```
+    ```bash
+    make install
+    ```
 
-or set your own virtual environment using pip and other package managers.
+    or set your own virtual environment using pip and other package managers.
 
 3) Don't forget to create the '.env' file that contains your secret keys and database settings: 
  - Please refer to the '.env_example' file
@@ -33,23 +33,32 @@ or set your own virtual environment using pip and other package managers.
 
 4) Apply initial migration:
 
-```bash
-alembic upgrade head
-```
+    ```bash
+    alembic upgrade head
+    ```
 
 5) Run the project with a command:
 
-```bash
-make run
-```
+    ```bash
+    make run
+    ```
 
-or with a Uvicorn directly:
+    or with a Uvicorn directly:
 
-```bash
-uvicorn main:app --reload
-```
+    ```bash
+    uvicorn main:app --reload
+    ```
 
-6) Check Makefile for the rest of the available commands.
+6) Alternatively, run the project with Docker:
+
+    ```bash
+    docker build -t currency-converter .
+    ```
+    ```bash
+    docker run -p 8000:8000 currency-converter
+    ```
+
+Also check Makefile for the rest of the available commands.
 
 ## List of endpoints
 
