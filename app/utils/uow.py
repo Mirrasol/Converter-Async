@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 from app.db.database import async_session_maker
 from app.repositories.users_repository import UserRepository
 

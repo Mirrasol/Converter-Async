@@ -1,10 +1,11 @@
-from app.api.schemas.users import UserCreate, UserFromDB
-from app.utils.uow import IUnitOfWork
-from app.core.security import create_token
-from app.core.pass_hash import get_password_hash, verify_password
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.exc import NoResultFound
+
+from app.api.schemas.users import UserCreate, UserFromDB
 from app.core.exception_handlers import InvalidCredentialsException, UserExistsException
+from app.core.pass_hash import get_password_hash, verify_password
+from app.core.security import create_token
+from app.utils.uow import IUnitOfWork
 
 
 class UserService:

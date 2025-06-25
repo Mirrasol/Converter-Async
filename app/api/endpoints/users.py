@@ -1,9 +1,11 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends
+from fastapi.security import OAuth2PasswordRequestForm
+
 from app.api.schemas.users import UserCreate
 from app.services.users_service import UserService
-from app.utils.uow import UnitOfWork, IUnitOfWork
-from fastapi.security import OAuth2PasswordRequestForm
-from typing import Annotated
+from app.utils.uow import IUnitOfWork, UnitOfWork
 
 auth_router = APIRouter(
     prefix='/auth',

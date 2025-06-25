@@ -10,5 +10,8 @@ test:
 lint:
 	uv run ruff check
 
+fix-lint:
+	uv run ruff check --fix . 
+
 build:
 	uv build

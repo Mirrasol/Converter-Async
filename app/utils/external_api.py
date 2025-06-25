@@ -1,7 +1,8 @@
 import aiohttp
-from app.core.config import get_settings
+
 from app.api.schemas.currency import Currencies
-from app.core.exception_handlers import InvalidCurrencyException, ExternalAPIException
+from app.core.config import get_settings
+from app.core.exception_handlers import ExternalAPIException, InvalidCurrencyException
 
 settings = get_settings()
 
