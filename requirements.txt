@@ -1,0 +1,11 @@
+aiohttp>=3.12.13
+alembic>=1.14.1
+asyncpg>=0.30.0
+fastapi[all]>=0.115.6
+passlib[bcrypt]>=1.7.4
+psycopg2-binary>=2.9.10
+pydantic-settings>=2.7.0
+pyjwt>=2.10.1
+python-dotenv>=1.0.1
+sqlalchemy>=2.0.36
+ruff>=0.12.0
