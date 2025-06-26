@@ -49,13 +49,13 @@ This project is built using FastAPI as the main framework. Please refer to the p
     uvicorn main:app --reload
     ```
 
-6) Alternatively, run the project with Docker:
+6) Alternatively, run the project with Docker and apply initial migration:
 
     ```bash
-    docker build -t currency-converter .
+    docker compose -f docker-compose.yaml up -d
     ```
     ```bash
-    docker run -p 8000:8000 currency-converter
+    docker compose exec web alembic upgrade head
     ```
 
 Also check Makefile for the rest of the available commands.

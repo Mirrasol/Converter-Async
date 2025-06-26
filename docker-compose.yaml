@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_HOST: ${DB_HOST}
+      PGDATA: /var/lib/postgresql/data/curr_converter/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data/curr_converter/pgdata
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $$DB_NAME -U $$DB_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+  web:
+    build: .
+    container_name: curr-converter-docker
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM}
+      API_KEY: ${API_KEY}
+    env_file:
+      - .env
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+
+volumes:
+  db-data:
